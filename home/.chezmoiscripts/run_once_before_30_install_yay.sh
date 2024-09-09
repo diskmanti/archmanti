@@ -2,7 +2,7 @@
 set -euo pipefail
 
 DIR=$(dirname "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)")
-. "$DIR/assets/base.sh"
+. "$DIR/assets/base"
 . "$DIR/assets/ansi"
 
 
