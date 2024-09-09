@@ -2,8 +2,8 @@
 set -euo pipefail
 
 DIR=$(dirname "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)")
-. "$DIR/.chezmoiscripts/base.sh"
-. "$DIR/.chezmoiscripts/ansi"
+. "$DIR/assets/base.sh"
+. "$DIR/assets/ansi"
 
 
 if [[ "$OSTYPE" != "linux-gnu"* ]]; then
