@@ -1,0 +1,6 @@
+# {{- $packages := splitList " " (includeTemplate "universal/common-packages" .) }}
+{{- $packages =  concat (without $packages "gh") (list "github-cli") -}}
+"base-devel"
+"git"
+"go"
+{{- $packages | sortAlpha | join " " -}}
