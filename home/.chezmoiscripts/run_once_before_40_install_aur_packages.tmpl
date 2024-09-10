@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+source {{ .chezmoi.sourceDir }}/.scripts/ansi.sh
+source {{ .chezmoi.sourceDir }}/.scripts/base.sh
+
+if [[ "$OSTYPE" != "linux-gnu"* ]]; then
+	ansi --yellow "Not a Linux platform. Skipping."
+	exit 0
+fi
+
+if [ ! -f "/etc/arch-release" ]; then
+	ansi --yellow "Not running arch. Skipping."
+fi
+
+if ! isAvailable yay; then
+    {{- $packages := splitList " " (includeTemplate "archlinux/packages" .) }}
+
+    yay -Sy --noconfirm --needed {{ $packages | sortAlpha | uniq | join " " -}}
+fi
