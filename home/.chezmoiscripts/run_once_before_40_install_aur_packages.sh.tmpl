@@ -14,7 +14,5 @@ if [ ! -f "/etc/arch-release" ]; then
 fi
 
 
-{{- $packages := splitList " " (includeTemplate "archlinux/packages" .) }}
-
-yay -Sy --noconfirm --needed {{ $packages | sortAlpha | uniq | join " " -}}
+yay -Sy --noconfirm --needed i3 rofi polybar neovim dunst feh
 
