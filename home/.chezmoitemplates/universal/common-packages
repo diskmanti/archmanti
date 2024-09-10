@@ -11,6 +11,5 @@
   "ripgrep"
   "wget"
   "starship"
-
 -}}
 {{- $packages | sortAlpha | join " " -}}
