@@ -13,7 +13,7 @@ if [ ! -f "/etc/arch-release" ]; then
 	ansi --yellow "Not running arch. Skipping."
 fi
 
-if ! isAvailable yay; then
+if isAvailable yay; then
     {{- $packages := splitList " " (includeTemplate "archlinux/packages" .) }}
 
     yay -Sy --noconfirm --needed {{ $packages | sortAlpha | uniq | join " " -}}
