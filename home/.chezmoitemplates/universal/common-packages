@@ -1,0 +1,16 @@
+{{- $packages := list
+  "bat"
+  "coreutils"
+  "curl"
+  "eza"
+  "fd"
+  "gh"
+  "git"
+  "jq"
+  "neovim"
+  "ripgrep"
+  "wget"
+  "starship"
+
+-}}
+{{- $packages | sortAlpha | join " " -}}
