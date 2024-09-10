@@ -16,6 +16,5 @@ fi
 if isAvailable yay; then
 	{{- $packages := splitList " " (includeTemplate "archlinux/packages" .) }}
 
-	# {{ includeTemplate "universal/next-update" . }}
 	yay -Sy --noconfirm --needed {{ $packages | sortAlpha | uniq | join " " -}}
 fi
