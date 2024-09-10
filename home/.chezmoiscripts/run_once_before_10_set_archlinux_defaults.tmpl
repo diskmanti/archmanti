@@ -39,5 +39,5 @@ sudo pacman -Sy --noconfirm archlinux-keyring
 
 # System beep off
 ansi --bg-green "Turning systembeep off"
-sudo rmmod pcspkr
+# sudo rmmod pcspkr
 echo "blacklist pcspkr" | sudo tee /etc/modprobe.d/nobeep.conf
