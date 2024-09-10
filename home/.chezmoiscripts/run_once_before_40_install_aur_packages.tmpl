@@ -14,7 +14,8 @@ if [ ! -f "/etc/arch-release" ]; then
 fi
 
 if isAvailable yay; then
-    {{- $packages := splitList " " (includeTemplate "archlinux/packages" .) }}
+	{{- $packages := splitList " " (includeTemplate "archlinux/packages" .) }}
 
-    yay -Sy --noconfirm --needed {{ $packages | sortAlpha | uniq | join " " -}}
+	# {{ includeTemplate "universal/next-update" . }}
+	yay -Sy --noconfirm --needed {{ $packages | sortAlpha | uniq | join " " -}}
 fi
