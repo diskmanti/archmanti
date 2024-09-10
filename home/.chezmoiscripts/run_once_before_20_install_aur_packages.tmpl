@@ -14,10 +14,11 @@ if [ ! -f "/etc/arch-release" ]; then
 	ansi --yellow "Not running arch. Skipping."
 fi
 
-{{- $packages := splitList " " (includeTemplate "archlinux/packages" .) }}
+# {{- $packages := splitList " " (includeTemplate "archlinux/packages" .) }}
 
 ansi --bg-green "Installing required packages to install YAY"
-sudo pacman -Sy --noconfirm --needed {{ $packages | sortAlpha | uniq | join " " -}}
+# sudo pacman -Sy --noconfirm --needed {{ $packages | sortAlpha | uniq | join " " -}}
+sudo pacman -Sy --needed git base-devel go
 
 # AUR_BUNDLE_FILE="$DIR/Aurfile"
 # ansi --green "Using $AUR_BUNDLE_FILE bundle file"
