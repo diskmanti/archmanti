@@ -18,7 +18,7 @@ fi
 
 ansi --bg-green "Installing required packages to install YAY"
 # sudo pacman -Sy --noconfirm --needed {{ $packages | sortAlpha | uniq | join " " -}}
-sudo pacman -Sy --needed git base-devel go
+sudo pacman -S --needed git base-devel go
 
 # AUR_BUNDLE_FILE="$DIR/Aurfile"
 # ansi --green "Using $AUR_BUNDLE_FILE bundle file"
