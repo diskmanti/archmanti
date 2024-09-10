@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-DIR=$(dirname "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)")
-. "$DIR/.chezmoiscripts/base"
-. "$DIR/.chezmoiscripts/ansi"
+# DIR=$(dirname "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)")
+# . "$DIR/.chezmoiscripts/base"
+# . "$DIR/.chezmoiscripts/ansi"
 
 if [[ "$OSTYPE" != "linux-gnu"* ]]; then
 	ansi --yellow "Not a Linux platform. Skipping."
