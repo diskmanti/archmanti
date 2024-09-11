@@ -13,6 +13,6 @@ if [ ! -f "/etc/arch-release" ]; then
 	ansi --yellow "Not running arch. Skipping."
 fi
 
-
-yay -Sy --noconfirm --needed i3 rofi polybar neovim dunst feh
+ansi --bg-green "Installing Xorg and I3"
+yay -Sy --noconfirm --needed i3 rofi polybar neovim dunst feh lightdm lightdm-gtk-greeter arc-gtk papirus-icon-theme xorg xorg-init
 
