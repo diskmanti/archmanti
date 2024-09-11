@@ -19,12 +19,12 @@ ansi --bg-green "Installing required packages to install YAY"
 sudo pacman -S --noconfirm --needed git base-devel go
 
 install_yay_deps() {
-    local packages="i3-wm rofi polybar dunst feh xorg-server xorg-xinit xorg-xmodmap xorg-xrandr"
+    local packages="git base-devel go"
     
     ansi --bg-green "Installing packages: $packages"
     
     # Install the packages using yay
-    yay -S --noconfirm "$packages"
+    sudo pacman -S --noconfirm "$packages"
     
     # Check if the installation was successful
     if [ $? -eq 0 ]; then
