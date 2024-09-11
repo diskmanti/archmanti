@@ -14,10 +14,10 @@ if [ ! -f "/etc/arch-release" ]; then
 fi
 
 ansi --bg-green "Installing OpenSSH"
-yay -S openssh
+yay -S --noconfirm openssh
 
 ansi --bg-green "Enabling openssh service"
-sudo systemctl start --now openssh
+sudo systemctl enable --now sshd
 
 # Get the current IP address
 ip_address=$(ip -4 addr show | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
