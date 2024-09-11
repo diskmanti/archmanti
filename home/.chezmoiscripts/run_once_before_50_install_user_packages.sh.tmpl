@@ -4,7 +4,6 @@ set -euo pipefail
 source {{ .chezmoi.sourceDir }}/.scripts/ansi.sh
 source {{ .chezmoi.sourceDir }}/.scripts/base.sh
 
-
 if [[ "$OSTYPE" != "linux-gnu"* ]]; then
 	ansi --yellow "Not a Linux platform. Skipping."
 	exit 0
@@ -14,12 +13,9 @@ if [ ! -f "/etc/arch-release" ]; then
 	ansi --yellow "Not running arch. Skipping."
 fi
 
-ansi --bg-green "Installing required packages to install YAY"
 
-sudo pacman -S --noconfirm --needed git base-devel go
-
-install_yay_deps() {
-    local packages="i3-wm rofi polybar dunst feh xorg-server xorg-xinit xorg-xmodmap xorg-xrandr"
+install_user_packages() {
+    local packages="neovim qutebrowser"
     
     ansi --bg-green "Installing packages: $packages"
     
@@ -44,4 +40,4 @@ install_yay_deps() {
     done
 }
 
-install_yay_deps
+install_user_packages
