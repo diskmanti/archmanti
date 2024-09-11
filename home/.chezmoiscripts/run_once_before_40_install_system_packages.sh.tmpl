@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+source {{ .chezmoi.sourceDir }}/.scripts/ansi.sh
+source {{ .chezmoi.sourceDir }}/.scripts/base.sh
+
+if [[ "$OSTYPE" != "linux-gnu"* ]]; then
+	ansi --yellow "Not a Linux platform. Skipping."
+	exit 0
+fi
+
+if [ ! -f "/etc/arch-release" ]; then
+	ansi --yellow "Not running arch. Skipping."
+fi
+
+
+install_system_packages() {
+    local packages="i3 rofi polybar neovim dunst feh lightdm lightdm-gtk-greeter arc-gtk papirus-icon-theme xorg-server xorg-init"
+    
+    ansi --bg-green "Installing packages: $packages"
+    
+    # Install the packages using yay
+    yay -S --noconfirm "$packages"
+    
+    # Check if the installation was successful
+    if [ $? -eq 0 ]; then
+        ansi --bg-green "Installation of packages $packages was successful."
+    else
+        ansi --bg-red "Installation of packages $packages failed."
+        return 1
+    fi
+    
+    # Verify that each package was installed
+    for package in $packages; do
+        if pacman -Q "$package" &> /dev/null; then
+            ansi --bg-green "$package is installed."
+        else
+            ansi --bg-red "$package is not installed."
+        fi
+    done
+}
+
+install_system_packages
