@@ -50,7 +50,7 @@ install_openssh() {
 enable_ssh() {
   ansi --bg-green --black "Enabling OpenSSH service"
 
-  sudo systemctl enable --now ssh
+  sudo systemctl enable --now sshd
 
   if [ $? -eq 0 ]; then
       ansi --bg-green --black "Installation of packages $packages was successful."
