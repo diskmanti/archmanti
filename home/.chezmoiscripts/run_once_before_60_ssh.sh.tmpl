@@ -53,10 +53,10 @@ enable_ssh() {
   sudo systemctl enable --now sshd
 
   if [ $? -eq 0 ]; then
-      ansi --bg-green --black "Installation of packages $packages was successful."
+    ansi --bg-green --black "Installation of packages $packages was successful."
   else
-      ansi --bg-red --black "Installation of packages $packages failed."
-      return 1
+    ansi --bg-red --black "Installation of packages $packages failed."
+    return 1
   fi
 }
 
