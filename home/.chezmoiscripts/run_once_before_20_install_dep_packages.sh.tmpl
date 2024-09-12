@@ -23,8 +23,11 @@ install_yay_deps() {
     
     ansi --bg-green --black "Installing packages: $packages"
     
-    # Install the packages using yay
-    sudo pacman -S --noconfirm "$packages"
+    # Install the packages using pacman
+    for package in "${packages[@]}"; do
+      ansi --bg-green --black "Installing $package" 
+      sudo pacman -S --noconfirm "$package"
+    done
     
     # Check if the installation was successful
     if [ $? -eq 0 ]; then
