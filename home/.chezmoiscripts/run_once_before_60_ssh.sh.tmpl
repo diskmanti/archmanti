@@ -14,12 +14,20 @@ if [ ! -f "/etc/arch-release" ]; then
 fi
 
 install_openssh() {
-    local packages="openssh"
+    local packages=("openssh")
     
     ansi --bg-green --black "Installing packages: $packages"
     
     # Install the packages using yay
-    yay -S --noconfirm "$packages"
+    for package in "${packages[@]}"; do
+      ansi --bg-green --black "Installing $package"
+      if yay -Syu --noconfirm --needed "$package"; then
+        ansi --bg-green --black "Installation of $package was successful."
+      else
+        ansi --bg-red "Installation of $package failed."
+        return 1
+      fi
+    done
     
     # Check if the installation was successful
     if [ $? -eq 0 ]; then

@@ -15,12 +15,20 @@ fi
 
 
 install_system_packages() {
-    local packages="i3-wm rofi polybar dunst feh xorg-server xorg-xinit xorg-xmodmap xorg-xrandr-git"
+    local packages=("i3-wm" "i3-nag" "rofi" "polybar" "dunst" "feh" "xorg-server" "xorg-xinit" "xorg-xmodmap" "xorg-xrandr-git")
     
     ansi --bg-green --black "Installing packages: $packages"
     
     # Install the packages using yay
-    yay -S --noconfirm "$packages"
+    for package in "${packages[@]}"; do
+      ansi --bg-green --black "Installing $package"
+      if yay -Syu --noconfirm --needed "$package"; then
+          ansi --bg-green --black "Installation of $package was successful."
+      else
+        ansi --bg-red "Installation of $package failed."
+        return 1
+      fi
+    done
     
     # Check if the installation was successful
     if [ $? -eq 0 ]; then
