@@ -1,6 +1,0 @@
-{{- if ne .chezmoi.os "linux" }}
-
-.chezmoiscripts/ansi*
-.chezmoiscripts/base*
-
-{{- end }}
