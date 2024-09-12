@@ -24,7 +24,7 @@ install_yay_deps() {
     # Install the packages using pacman
     for package in "${packages[@]}"; do
       ansi --bg-green --black "Installing $package" 
-      sudo pacman -S --noconfirm "$package"
+      sudo pacman -S --noconfirm --needed "$package"
     done
     
     # Check if the installation was successful
