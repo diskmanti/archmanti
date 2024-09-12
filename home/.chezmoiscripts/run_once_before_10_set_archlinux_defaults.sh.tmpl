@@ -13,31 +13,31 @@ if [ ! -f "/etc/arch-release" ]; then
 fi
 
 # ask sudo upfront
-ansi --bg-green "Root Password please"
+ansi --bg-green --black "Root Password please"
 sudo -v
 
-ansi --bg-green "Updating pacman.conf.."
+ansi --bg-green --black "Updating pacman.conf.."
 sudo sed -i '/Color$/s/^#//g' /etc/pacman.conf
 sudo sed -i '/TotalDownload$/s/^#//g' /etc/pacman.conf
 sudo sed -i '/CheckSpace$/s/^#//g' /etc/pacman.conf
 sudo sed -i '/VerbosePkgLists$/s/^#//g' /etc/pacman.conf
 sudo sed -i '/^#\[multilib\]/{N;s/#//g}' /etc/pacman.conf
 
-ansi --bg-green "Enable timedatectl and set up timezone"
+ansi --bg-green --black "Enable timedatectl and set up timezone"
 sudo timedatectl set-timezone Europe/Amsterdam
 sudo timedatectl set-ntp 1
 sudo timedatectl set-local-rtc 0
 sudo ln -sf /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
 
-ansi --bg-green "Setup locale"
+ansi --bg-green --black "Setup locale"
 sudo sed -i '/en_US.UTF-8$/s/^#//g' /etc/pacman.conf
 sudo locale-gen
 
 
-ansi --bg-green "Refreshing Arch Keyring..."
+ansi --bg-green --black "Refreshing Arch Keyring..."
 sudo pacman -Sy --noconfirm archlinux-keyring
 
 # System beep off
-ansi --bg-green "Turning systembeep off"
+ansi --bg-green --black "Turning systembeep off"
 # sudo rmmod pcspkr
 echo "blacklist pcspkr" | sudo tee /etc/modprobe.d/nobeep.conf

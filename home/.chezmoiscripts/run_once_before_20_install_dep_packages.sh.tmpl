@@ -14,30 +14,30 @@ if [ ! -f "/etc/arch-release" ]; then
 	ansi --yellow "Not running arch. Skipping."
 fi
 
-ansi --bg-green "Installing required packages to install YAY"
+ansi --bg-green --black "Installing required packages to install YAY"
 
 sudo pacman -S --noconfirm --needed git base-devel go
 
 install_yay_deps() {
     local packages="git base-devel go"
     
-    ansi --bg-green "Installing packages: $packages"
+    ansi --bg-green --black "Installing packages: $packages"
     
     # Install the packages using yay
     sudo pacman -S --noconfirm "$packages"
     
     # Check if the installation was successful
     if [ $? -eq 0 ]; then
-        ansi --bg-green "Installation of packages $packages was successful."
+        ansi --bg-green --black "Installation of packages $packages was successful."
     else
         ansi --bg-red "Installation of packages $packages failed."
         return 1
     fi
     
     # Verify that each package was installed
-    for package in $packages; do
+    for package in "${packages[@]}"; do
         if pacman -Q "$package" &> /dev/null; then
-            ansi --bg-green "$package is installed."
+            ansi --bg-green --black "$package is installed."
         else
             ansi --bg-red "$package is not installed."
         fi

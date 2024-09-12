@@ -16,38 +16,38 @@ fi
 install_openssh() {
     local packages="openssh"
     
-    ansi --bg-green "Installing packages: $packages"
+    ansi --bg-green --black "Installing packages: $packages"
     
     # Install the packages using yay
     yay -S --noconfirm "$packages"
     
     # Check if the installation was successful
     if [ $? -eq 0 ]; then
-        ansi --bg-green "Installation of packages $packages was successful."
+        ansi --bg-green --black "Installation of packages $packages was successful."
     else
-        ansi --bg-red "Installation of packages $packages failed."
+        ansi --bg-red --black "Installation of packages $packages failed."
         return 1
     fi
     
     # Verify that each package was installed
-    for package in $packages; do
+    for package in "${packages[@]}"; do
         if pacman -Q "$package" &> /dev/null; then
-            ansi --bg-green "$package is installed."
+            ansi --bg-green --black "$package is installed."
         else
-            ansi --bg-red "$package is not installed."
+            ansi --bg-red --black "$package is not installed."
         fi
     done
 }
 
 enable_ssh() {
-  ansi --bg-green "Enabling OpenSSH service"
+  ansi --bg-green --black "Enabling OpenSSH service"
 
   sudo systemctl enable --now ssh
 
   if [ $? -eq 0 ]; then
-      ansi --bg-green "Installation of packages $packages was successful."
+      ansi --bg-green --black "Installation of packages $packages was successful."
   else
-      ansi --bg-red "Installation of packages $packages failed."
+      ansi --bg-red --black "Installation of packages $packages failed."
       return 1
   fi
 }
@@ -58,9 +58,9 @@ print_machine_ip() {
 
   # Check if we found an IP address
   if [ -z "$ip_address" ]; then
-      ansi --bg-red "No IP address found."
+      ansi --bg-red --black "No IP address found."
   else
-      ansi --bg-green "Current IP address: $ip_address"
+      ansi --bg-green --black "Current IP address: $ip_address"
   fi
 }
 
