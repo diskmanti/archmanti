@@ -193,7 +193,8 @@ bindsym $mod+r mode "resize"
 # Amanti
 
 # Polybar
-exec --no-startupid $HOME/.config/polybar/elroy/launch.sh
+exec --no-startupid $HOME/.config/polybar/material/pywal.sh $HOME/.wallpaper.jpg
+exec --no-startupid $HOME/.config/polybar/material/launch.sh --material
 
 # Wallpaper
 exec --no-startupid feh --bg-scale $HOME/.wallpaper.jpg
