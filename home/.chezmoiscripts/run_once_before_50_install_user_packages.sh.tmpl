@@ -17,7 +17,7 @@ fi
 install_user_packages() {
     local packages=("neovim" "wezterm" "getnf")
     
-    ansi --bg-green --black "Installing packages: $packages"
+    ansi --bg-green --black "Installing packages: ${packages[*]}"
     
     # Install the packages using yay
     for package in "${packages[@]}"; do
@@ -32,14 +32,14 @@ install_user_packages() {
     
     # Check if the installation was successful
     if [ $? -eq 0 ]; then
-        ansi --bg-green --black "Installation of packages $packages was successful."
+        ansi --bg-green --black "Installation of packages ${packages[*]} was successful."
     else
-        ansi --bg-red --black "Installation of packages $packages failed."
+        ansi --bg-red --black "Installation of packages ${packages[*]} failed."
         return 1
     fi
     
     # Verify that each package was installed
-    for package in $packages; do
+    for package in "${packages[@]}"; do
         if pacman -Q "$package" &> /dev/null; then
             ansi --bg-green --black "$package is installed."
         else

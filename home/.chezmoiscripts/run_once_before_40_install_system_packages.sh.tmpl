@@ -17,7 +17,7 @@ fi
 install_system_packages() {
     local packages=("i3" "rofi" "polybar" "dunst" "feh" "xorg-server" "xorg-xinit" "xorg-xmodmap" "dex")
     
-    ansi --bg-green --black "Installing packages: $packages"
+    ansi --bg-green --black "Installing packages: ${packages[*]}"
     
     # Install the packages using yay
     for package in "${packages[@]}"; do
@@ -32,9 +32,9 @@ install_system_packages() {
     
     # Check if the installation was successful
     if [ $? -eq 0 ]; then
-        ansi --bg-green --black "Installation of packages $packages was successful."
+        ansi --bg-green --black "Installation of packages ${packages[*]} was successful."
     else
-      ansi --bg-red "Installation of packages $packages failed."
+      ansi --bg-red "Installation of packages ${packages[*]} failed."
       return 1
     fi
     
