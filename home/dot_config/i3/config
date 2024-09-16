@@ -194,3 +194,6 @@ bindsym $mod+r mode "resize"
 
 # Polybar
 exec --no-startupid $HOME/.config/polybar/elroy/launch.sh
+
+# Wallpaper
+exec --no-startupid feh --bg-scale $HOME/.wallpaper.jpg
