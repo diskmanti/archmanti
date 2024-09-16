@@ -1,4 +1,8 @@
-DIR="$HOME/.config/polybar/elroy"
+#!/usr/bin/env bash
+
+# Add this script to your wm startup file.
+
+DIR="$HOME/.config/polybar/config"
 
 # Terminate already running bar instances
 killall -q polybar
@@ -7,4 +11,5 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch the bar
-polybar -q example -c "$DIR"/config.ini &
+polybar -q main -c "$DIR"/config.ini &
+polybar -q second -c "$DIR"/config.ini &
