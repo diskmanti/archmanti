@@ -10,19 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
-set $mod Mod4
-
-# set default desktop layout (default is tiling)
-# workspace_layout tabbed <stacking|tabbed>
-
-# Configure border style <normal|1pixel|pixel xx|none|pixel>
-new_window pixel 1
-new_float normal
-
-# Hide borders
-hide_edge_borders none
-
-
+set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -205,9 +193,20 @@ bindsym $mod+r mode "resize"
 
 # Amanti
 
+# Picom
+exec --no-startup-id picom -b --config $HOME/.config/picom/picom.conf
+
 # Polybar
 exec --no-startup-id $HOME/.config/polybar/material/pywal.sh $HOME/.wallpaper.jpg
 exec --no-startup-id $HOME/.config/polybar/material/launch.sh --material
 
 # Wallpaper
 exec --no-startup-id feh --bg-scale $HOME/.wallpaper.jpg
+
+# Gaps
+
+gaps inner 5px
+gaps outer 0px
+
+# Smart gaps (gaps only used if more than one container in workspace)
+smart_gaps on
