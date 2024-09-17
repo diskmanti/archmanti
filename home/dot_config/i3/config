@@ -197,8 +197,7 @@ bindsym $mod+r mode "resize"
 exec --no-startup-id picom -b --config $HOME/.config/picom/picom.conf
 
 # Polybar
-exec --no-startup-id $HOME/.config/polybar/material/pywal.sh $HOME/.wallpaper.jpg
-exec --no-startup-id $HOME/.config/polybar/material/launch.sh --material
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Wallpaper
 exec --no-startup-id feh --bg-scale $HOME/.wallpaper.jpg
