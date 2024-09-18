@@ -2,13 +2,6 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 
-
-format = """
-[╭─user───❯](bold blue) $username 
-[┣─system─❯](bold yellow) $hostname #[┣─project❯](bold red) $directory$git_branch$git_state$git_status 
-[╰─cmd────❯](bold green) 
-"""
-
 # Inserts a blank line between shell prompts
 add_newline = true
 
