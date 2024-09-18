@@ -11,7 +11,7 @@ MONITORS=$(xrandr --query | grep " connected" | cut -d" " -f1)
 
 # MONITORS=$MONITORS polybar top &
 # MONITOR=$MONITORS polybar bottom;
-echo "---" | tee -a /tmp/polybar_bottom.log
-MONITOR=$MONITORS polybar bottom 2>&1 | tee -a /tmp/polybar_bottom.log & disown
+echo "---" | tee -a /tmp/polybar_example.log
+MONITOR=$MONITORS polybar example 2>&1 | tee -a /tmp/polybar_example.log & disown
 
 echo "Bars launched..."
