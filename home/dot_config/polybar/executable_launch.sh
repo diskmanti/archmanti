@@ -9,8 +9,8 @@ killall -q polybar
 # Launch polybar
 MONITORS=$(xrandr --query | grep " connected" | cut -d" " -f1)
 
-echo "---" | tee -a /tmp/pmainbar-i3.log
+echo "---" | tee -a /tmp/mainbar-i3.log
 
-MONITORS=$MONITORS polybar mainbar-i3  2>&1 | tee -a /tmp/pmainbar-i3.log & disown
+MONITORS=$MONITORS polybar mainbar-i3  2>&1 | tee -a /tmp/mainbar-i3.log & disown
 
 echo "Bars launched..."
